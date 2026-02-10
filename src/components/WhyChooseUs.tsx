@@ -1,34 +1,34 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { Clock, CloudRain, Award, Shield, ArrowRight } from "lucide-react";
+import { Clock, Drill, Users, Shield } from "lucide-react";
 
 const benefits = [
   {
     id: 1,
     Icon: Clock,
-    headline: "Your Project, On Your Timeline",
-    body: "Transparent scheduling means you'll know exactly when we arrive and when your project wraps up—from day-one repairs to luxury remodels.",
+    headline: "On Schedule, Every Time",
+    body: "Transparent scheduling means you'll know exactly when trenching starts, when utilities go live, and when final restoration is complete.",
     gridClass: "md:col-span-2 md:row-span-3",
   },
   {
     id: 2,
-    Icon: CloudRain,
-    headline: "Built for KC's Toughest Seasons",
-    body: "Get construction and mechanical systems engineered for Kansas City's extremes—no shortcuts, no callbacks.",
+    Icon: Drill,
+    headline: "Built to Last Underground",
+    body: "Your infrastructure faces shifting soil and freeze-thaw cycles. You get utility installations engineered for Indiana's geology—proper depth, correct bedding, zero shortcuts.",
     gridClass: "md:col-span-2 md:row-span-2",
   },
   {
     id: 3,
-    Icon: Award,
-    headline: "Woman-Owned Integrity",
-    body: "When Alicia Amos stakes her name on your project, you're getting a handshake promise and a reputation you can trust.",
+    Icon: Users,
+    headline: "Locally Operated, Community-Focused",
+    body: "You're not getting a corporate subcontractor—you're getting a Bloomington-based team that answers your calls directly.",
     gridClass: "md:col-span-2 md:row-span-3",
   },
   {
     id: 4,
     Icon: Shield,
-    headline: "Licensed & Accountable",
-    body: "We carry full licensing across MO & KS and a track record of passing every single inspection on the first try.",
+    headline: "Licensed & Safety-Certified",
+    body: "Full excavation licensing, comprehensive liability coverage, and OSHA compliance on every job site. We pass utility inspections on the first call.",
     gridClass: "md:col-span-2 md:row-span-2",
   },
 ];
@@ -44,7 +44,7 @@ const WhyChooseUs = () => {
   };
 
   return (
-    <section id="why-us" className="py-16 md:py-24 bg-[#0a192f] overflow-hidden">
+    <section id="why-us" className="py-16 md:py-24 bg-[#1a1a1a] overflow-hidden">
       <style>{`
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -55,9 +55,9 @@ const WhyChooseUs = () => {
         {/* HEADER */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight" style={{ fontFamily: "'Georgia', serif" }}>
-            The <span className="text-gold">Alicia Amos</span> Difference
+            Why Bloomington Projects Start with <span className="text-[#C8102E]">United Utilities</span>
           </h2>
-          <div className="w-24 h-1 bg-gold mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-[#C8102E] mx-auto rounded-full" />
         </div>
 
         {/* MOBILE: LUXURY SCROLL (80vw, Centered, No Fade) */}
@@ -69,11 +69,11 @@ const WhyChooseUs = () => {
           >
             {benefits.map((b) => (
               <div key={b.id} className="min-w-[80vw] snap-center bg-white/5 border border-white/10 backdrop-blur-xl p-8 rounded-[2.5rem] flex flex-col shadow-2xl">
-                <b.Icon size={48} className="text-gold mb-6" />
+                <b.Icon size={48} className="text-[#C8102E] mb-6" />
                 <h3 className="text-2xl font-bold text-white mb-4 leading-tight">{b.headline}</h3>
                 <p className="text-gray-300 text-sm leading-relaxed">{b.body}</p>
                 <div className="mt-auto pt-8">
-                  <div className="h-1 w-12 bg-gold/30 rounded-full" />
+                  <div className="h-1 w-12 bg-[#C8102E]/30 rounded-full" />
                 </div>
               </div>
             ))}
@@ -81,7 +81,7 @@ const WhyChooseUs = () => {
           {/* DOTS */}
           <div className="flex justify-center gap-3 mt-8">
             {benefits.map((_, i) => (
-              <div key={i} className={`h-2 rounded-full transition-all duration-300 ${activeIdx === i ? "w-8 bg-gold" : "w-2 bg-white/20"}`} />
+              <div key={i} className={`h-2 rounded-full transition-all duration-300 ${activeIdx === i ? "w-8 bg-[#C8102E]" : "w-2 bg-white/20"}`} />
             ))}
           </div>
         </div>
@@ -92,12 +92,12 @@ const WhyChooseUs = () => {
             <motion.div
               key={b.id}
               whileHover={{ y: -5 }}
-              className={`${b.gridClass} bg-white/5 border border-white/10 backdrop-blur-xl rounded-[2.5rem] p-10 flex flex-col items-center justify-center text-center group hover:border-gold/50 transition-all duration-500 shadow-2xl`}
+              className={`${b.gridClass} bg-white/5 border border-white/10 backdrop-blur-xl rounded-[2.5rem] p-10 flex flex-col items-center justify-center text-center group hover:border-[#C8102E]/50 transition-all duration-500 shadow-2xl`}
             >
-              <b.Icon size={52} className="text-gold mb-6 group-hover:scale-110 transition-transform duration-500" />
+              <b.Icon size={52} className="text-[#C8102E] mb-6 group-hover:scale-110 transition-transform duration-500" />
               <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">{b.headline}</h3>
               <p className="text-gray-300 leading-relaxed group-hover:text-white transition-colors duration-300 max-w-xs">{b.body}</p>
-              <div className="mt-8 h-1 w-12 bg-gold/30 rounded-full group-hover:w-24 group-hover:bg-gold transition-all duration-500" />
+              <div className="mt-8 h-1 w-12 bg-[#C8102E]/30 rounded-full group-hover:w-24 group-hover:bg-[#C8102E] transition-all duration-500" />
             </motion.div>
           ))}
         </div>
