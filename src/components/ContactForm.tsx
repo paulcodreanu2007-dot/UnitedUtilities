@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Send } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion } from " framer-motion";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Required").max(100),
@@ -18,12 +18,12 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const serviceOptions = [
-  "Construction & Renovation",
-  "Mechanical & Plumbing",
-  "Luxury Remodeling",
-  "Preventative Maintenance",
-  "Emergency Service",
-  "Not Sure Yet",
+  "Underground Utilities",
+  "Excavation & Grading",
+  "Water & Sewer Repair",
+  "Site Preparation",
+  "Emergency Utility Service",
+  "Other Industrial Inquiry",
 ];
 
 const ContactForm = () => {
@@ -42,36 +42,36 @@ const ContactForm = () => {
       setIsSubmitting(true);
       const { error } = await supabase.from("contact_submissions").insert([data as Required<FormData>]);
       if (error) throw error;
-      toast({ title: "Sent!", description: "We'll call you within 24 hours." });
+      toast({ title: "Submission Received", description: "A project manager will call you within 24 hours." });
       reset();
     } catch {
-      toast({ title: "Failed", description: "Please call (816) 555-0100.", variant: "destructive" });
+      toast({ title: "Submission Failed", description: "Please call our Bloomington office directly.", variant: "destructive" });
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const inputClass =
-    "w-full px-4 py-3 md:py-4 bg-white/5 border border-white/10 rounded-xl focus:border-gold/50 focus:ring-1 focus:ring-gold/50 text-white placeholder:text-white/20 transition-all outline-none appearance-none";
+    "w-full px-4 py-3 md:py-4 bg-white/5 border border-white/10 rounded-xl focus:border-[#C8102E]/50 focus:ring-1 focus:ring-[#C8102E]/50 text-white placeholder:text-white/20 transition-all outline-none appearance-none";
 
-  const labelClass = "text-gold text-[10px] uppercase tracking-[2px] font-bold mb-1.5 block ml-1";
+  const labelClass = "text-[#C8102E] text-[10px] uppercase tracking-[2px] font-bold mb-1.5 block ml-1";
 
   return (
-    <section id="contact" className="relative bg-[#0a192f] py-16 md:py-24 overflow-hidden">
-      {/* PRESTIGE DIVIDER LINE */}
+    <section id="contact" className="relative bg-[#1a1a1a] py-16 md:py-24 overflow-hidden">
+      {/* INDUSTRIAL ACCENT LINE */}
       <div className="absolute top-0 left-0 w-full z-20">
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-[#C8102E]/40 to-transparent" />
       </div>
 
-      {/* TOP GLOW */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.12),transparent_60%)]" />
+      {/* SAFETY RED GLOW */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(200,16,46,0.08),transparent_60%)]" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-6">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl md:text-6xl font-bold text-white mb-3" style={{ fontFamily: "'Georgia', serif" }}>
-            Ready to <span className="text-gold">Start?</span>
+            Secure Your <span className="text-[#C8102E]">Project</span>
           </h2>
-          <p className="text-gray-400 text-sm md:text-lg tracking-wide">Response within 24 hours.</p>
+          <p className="text-gray-400 text-sm md:text-lg tracking-wide uppercase font-semibold">Response guaranteed within 24 hours.</p>
         </div>
 
         <motion.div
@@ -82,51 +82,51 @@ const ContactForm = () => {
         >
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="relative bg-[#0a192f]/60 backdrop-blur-3xl rounded-[1.9rem] p-6 md:p-12 shadow-2xl border border-white/5"
+            className="relative bg-[#1a1a1a]/60 backdrop-blur-3xl rounded-[1.9rem] p-6 md:p-12 shadow-2xl border border-white/5"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               <div>
                 <label className={labelClass}>Name</label>
-                <input type="text" placeholder="Your Name" {...register("name")} className={inputClass} />
-                {errors.name && <p className="text-red-400 text-[10px] mt-1">{errors.name.message}</p>}
+                <input type="text" placeholder="Full Name" {...register("name")} className={inputClass} />
+                {errors.name && <p className="text-red-500 text-[10px] mt-1 font-bold italic uppercase">{errors.name.message}</p>}
               </div>
 
               <div>
                 <label className={labelClass}>Phone</label>
-                <input type="tel" placeholder="(816) 555-0100" {...register("phone")} className={inputClass} />
-                {errors.phone && <p className="text-red-400 text-[10px] mt-1">{errors.phone.message}</p>}
+                <input type="tel" placeholder="(812) 555-0100" {...register("phone")} className={inputClass} />
+                {errors.phone && <p className="text-red-500 text-[10px] mt-1 font-bold italic uppercase">{errors.phone.message}</p>}
               </div>
 
               <div className="md:col-span-1">
                 <label className={labelClass}>Email</label>
-                <input type="email" placeholder="email@example.com" {...register("email")} className={inputClass} />
+                <input type="email" placeholder="professional@company.com" {...register("email")} className={inputClass} />
               </div>
 
               <div className="md:col-span-1">
-                <label className={labelClass}>Service Needed</label>
+                <label className={labelClass}>Service Scope</label>
                 <div className="relative">
                   <select 
                     {...register("service_type")} 
-                    className={`${inputClass} !text-white/20`}
+                    className={`${inputClass} text-white`}
                     defaultValue=""
                     required
                   >
-                    <option value="" disabled className="bg-[#0a192f]">Select service...</option>
+                    <option value="" disabled className="bg-[#1a1a1a]">Select scope...</option>
                     {serviceOptions.map((opt) => (
-                      <option key={opt} value={opt} className="bg-[#0a192f] text-white">{opt}</option>
+                      <option key={opt} value={opt} className="bg-[#1a1a1a] text-white">{opt}</option>
                     ))}
                   </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gold">
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#C8102E]">
                     <svg className="fill-current h-4 w-4" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                   </div>
                 </div>
               </div>
 
               <div className="md:col-span-2">
-                <label className={labelClass}>Details</label>
+                <label className={labelClass}>Project Details</label>
                 <textarea
                   rows={3}
-                  placeholder="Describe your project..."
+                  placeholder="Tell us about the site location and required timeline..."
                   {...register("message")}
                   className={`${inputClass} resize-none`}
                 />
@@ -137,10 +137,10 @@ const ContactForm = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gold text-[#0a192f] py-4 md:py-5 rounded-xl text-base md:text-lg font-bold hover:bg-white transition-all flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(212,175,55,0.3)] active:scale-[0.98]"
+                className="w-full bg-[#C8102E] text-white py-4 md:py-5 rounded-xl text-base md:text-lg font-black hover:bg-white hover:text-[#C8102E] transition-all flex items-center justify-center gap-3 shadow-[0_0_25px_rgba(200,16,46,0.3)] active:scale-[0.98]"
               >
                 {isSubmitting ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
-                <span className="whitespace-nowrap uppercase tracking-wider">Get Free Consultation</span>
+                <span className="whitespace-nowrap uppercase tracking-widest">Request Field Quote</span>
               </button>
             </div>
           </form>
