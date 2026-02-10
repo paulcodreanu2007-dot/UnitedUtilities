@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 import { CheckCircle, Shield, HardHat, Construction } from "lucide-react";
 import { useCountUp } from "@/hooks/useCountUp";
 
-// Using a high-quality industrial placeholder to prevent Vercel "ENOENT" build errors
-const ownerPortrait = "https://images.unsplash.com/photo-1541913057-074989670732?q=80&w=1000&auto=format&fit=crop";
+// --- THE FIX: Importing your local file from assets ---
+import ownerPortrait from "@/assets/owner-portrait.jpg"; 
 
 const badges = [
   { Icon: CheckCircle, text: "Licensed", hasCounter: false },
@@ -39,18 +39,17 @@ const About = () => (
               alt="United Utilities Professional Excavation"
               className="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700"
             />
-            {/* Mobile Gradient Overlay: Fades the bottom into the Charcoal background */}
+            {/* Mobile Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent lg:hidden" />
           </motion.div>
         </div>
 
-        {/* CONTENT LAYER - Floating Glass Card on Mobile */}
+        {/* CONTENT LAYER */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           className="relative lg:col-span-7 z-10"
         >
-          {/* Mobile: Glass Card Look | Desktop: Clean Typography */}
           <div className="bg-white/5 lg:bg-transparent backdrop-blur-2xl lg:backdrop-blur-none p-8 lg:p-0 rounded-[2.5rem] border border-white/10 lg:border-none shadow-2xl lg:shadow-none">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight" style={{ fontFamily: "'Georgia', serif" }}>
               United Utilities:<br/> <span className="text-[#C8102E]">The Foundation of Bloomington</span>
@@ -65,7 +64,6 @@ const About = () => (
               </p>
             </div>
 
-            {/* Badges as "Floating Pills" */}
             <div className="flex flex-wrap gap-2 mt-8">
               {badges.map(({ Icon, text, hasCounter, count }) => (
                 hasCounter ? (
