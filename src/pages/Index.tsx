@@ -12,32 +12,52 @@ import Footer from "@/components/Footer";
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "Alicia's Services",
-  description: "Woman-owned construction, mechanical, and luxury remodeling company serving Kansas City metro.",
-  address: { "@type": "PostalAddress", addressLocality: "Kansas City", addressRegion: "MO" },
-  geo: { "@type": "GeoCoordinates", latitude: "39.0997", longitude: "-94.5786" },
-  telephone: "(816) 555-0100",
-  priceRange: "$$",
-  areaServed: ["Kansas City MO", "Kansas City KS", "Overland Park", "Leawood", "Plaza", "Brookside", "Waldo", "Mission Hills", "Prairie Village", "Lee's Summit"],
-  openingHours: "Mo-Fr 08:00-18:00, Sa 09:00-15:00",
+  "name": "United Utilities",
+  "description": "Professional excavation and underground utility services serving Bloomington and Southern Indiana.",
+  "address": { 
+    "@type": "PostalAddress", 
+    "addressLocality": "Bloomington", 
+    "addressRegion": "IN" 
+  },
+  "geo": { 
+    "@type": "GeoCoordinates", 
+    "latitude": "39.1653", 
+    "longitude": "-86.5264" 
+  },
+  "telephone": "(812) 271-4432",
+  "priceRange": "$$$",
+  "areaServed": ["Bloomington", "Ellettsville", "Bedford", "Martinsville", "Columbus", "Nashville", "Southern Indiana"],
+  "openingHours": "Mo-Fr 07:00-17:00, Sa 08:00-12:00",
 };
 
 const Index = () => (
   <>
     <Helmet>
-      <title>Alicia's Services | Kansas City Construction, Plumbing &amp; Luxury Remodeling</title>
-      <meta name="description" content="Woman-owned construction company serving KC metro. Expert plumbing, HVAC, luxury remodels & emergency repairs. Licensed in MO & KS. Get your free consultation today." />
-      <meta name="keywords" content="Kansas City construction, KC plumbing, luxury remodeling, woman-owned contractor, emergency HVAC, Missouri Kansas contractor" />
-      <meta property="og:title" content="Alicia's Services | Kansas City's Trusted Construction Partner" />
-      <meta property="og:description" content="From emergency plumbing to luxury remodels - honest pricing, expert craftsmanship, woman-owned integrity." />
+      {/* THIS CONTROLS THE BROWSER TAB TEXT */}
+      <title>United Utilities | Southern Indiana Excavation & Utilities</title>
+      
+      {/* THIS CONTROLS THE FAVICON (Ensure your file in /public is named favicon.ico) */}
+      <link rel="icon" href="/favicon.ico" />
+
+      <meta name="description" content="Precision excavation and underground utility solutions in Bloomington, IN. Specialized in site preparation, water/sewer repair, and emergency utility dispatch." />
+      <meta name="keywords" content="United Utilities, Bloomington excavation, Indiana utility contractor, sewer repair, grading, site prep Bloomington" />
+      
+      {/* SOCIAL MEDIA TAGS */}
+      <meta property="og:title" content="United Utilities | Professional Infrastructure Services" />
+      <meta property="og:description" content="Serving Southern Indiana with professional excavation and utility solutions. Built with grit." />
       <meta property="og:type" content="website" />
-      <meta name="geo.region" content="US-MO" />
-      <meta name="geo.placename" content="Kansas City" />
-      <meta name="geo.position" content="39.0997;-94.5786" />
-      <meta name="ICBM" content="39.0997, -94.5786" />
-      <meta name="theme-color" content="#1B365D" />
-      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-      <link rel="canonical" href="https://www.aliciasservices.com/" />
+      
+      {/* REGIONAL GEOGRAPHY */}
+      <meta name="geo.region" content="US-IN" />
+      <meta name="geo.placename" content="Bloomington" />
+      <meta name="geo.position" content="39.1653;-86.5264" />
+      <meta name="ICBM" content="39.1653, -86.5264" />
+      
+      {/* BRANDING */}
+      <meta name="theme-color" content="#C8102E" />
+      <meta name="robots" content="index, follow" />
+      
+      <link rel="canonical" href="https://www.unitedutilitiesin.com/" />
       <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
     </Helmet>
 
