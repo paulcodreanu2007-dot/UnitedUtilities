@@ -1,18 +1,16 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { CheckCircle } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg"; // <--- RESTORED YOUR IMAGE
+import heroBg from "@/assets/hero-bg.jpg"; // You'll replace with excavation/trenching image
 
 // --- SAFE COUNTING COMPONENT (Prevents the White Screen Crash) ---
 const CountingNumber = ({ value, duration = 1.5 }: { value: string, duration?: number }) => {
   const [displayValue, setDisplayValue] = useState(0);
 
   useEffect(() => {
-    // 1. Extract number safely
     const numericPart = value.replace(/\D/g, '');
     const target = parseInt(numericPart) || 0; 
 
-    // 2. Prevent crash if target is 0 or invalid
     if (target === 0) {
       setDisplayValue(0);
       return;
@@ -21,7 +19,6 @@ const CountingNumber = ({ value, duration = 1.5 }: { value: string, duration?: n
     let start = 0;
     const end = target;
     const totalMiliseconds = duration * 1000;
-    // 3. Math.max prevents "Infinity" crash if end is 0
     const incrementTime = Math.max(totalMiliseconds / end, 10); 
 
     const timer = setInterval(() => {
@@ -33,9 +30,8 @@ const CountingNumber = ({ value, duration = 1.5 }: { value: string, duration?: n
     return () => clearInterval(timer);
   }, [value, duration]);
 
-  // Re-attach non-numeric characters for display (e.g. "k", "+", "%")
   const suffix = value.replace(/[0-9]/g, '');
-  const isPrefix = /^\D/.test(value); // Detect if symbol is at start (like $)
+  const isPrefix = /^\D/.test(value);
 
   return (
     <span>
@@ -54,13 +50,13 @@ const Hero = () => {
   };
 
   return (
-    <section ref={sectionRef} id="home" className="relative min-h-screen flex items-center overflow-hidden bg-[#0a192f] pt-28 pb-20 lg:py-0">
+    <section ref={sectionRef} id="home" className="relative min-h-screen flex items-center overflow-hidden bg-[#1a1a1a] pt-28 pb-20 lg:py-0">
       
-      {/* Background Image - RESTORED */}
+      {/* Background Image - Replace with excavation/utility work photo */}
       <motion.div className="absolute inset-0 w-full h-[130%] -top-[15%]" style={{ y: backgroundY }}>
         <img 
             src={heroBg} 
-            alt="Luxury home" 
+            alt="Underground utility installation by United Utilities in Bloomington Indiana" 
             className="w-full h-full object-cover" 
             width={1920} 
             height={1088} 
@@ -68,29 +64,30 @@ const Hero = () => {
         />
       </motion.div>
 
-      {/* Navy Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-[#0a192f] via-[#0a192f]/90 lg:via-[#0a192f]/80 to-transparent" />
+      {/* Dark Gradient Overlay - Updated for excavation aesthetic */}
+      <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/90 lg:via-[#1a1a1a]/85 to-transparent" />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6">
         <div className="flex flex-col lg:grid lg:grid-cols-5 gap-10 lg:gap-12 items-center">
           
-          {/* Left Content (Desktop: Unchanged / Mobile: Center Aligned) */}
+          {/* Left Content */}
           <div className="lg:col-span-3 text-center lg:text-left text-white mt-4 lg:mt-0">
-            <div className="inline-flex items-center gap-2 bg-gold/10 backdrop-blur-md border border-gold/30 px-4 py-2 rounded-full mb-6">
-              <CheckCircle size={16} className="text-gold" />
-              <span className="text-xs md:text-sm font-semibold text-gold uppercase tracking-wider">Licensed & Insured</span>
+            <div className="inline-flex items-center gap-2 bg-[#C8102E]/10 backdrop-blur-md border border-[#C8102E]/30 px-4 py-2 rounded-full mb-6">
+              <CheckCircle size={16} className="text-[#C8102E]" />
+              <span className="text-xs md:text-sm font-semibold text-[#C8102E] uppercase tracking-wider">Licensed & Insured</span>
             </div>
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1]">
-              <span className="text-gold" style={{ fontFamily: "'Georgia', serif" }}>Craftsmanship</span><br/>That Lasts
+              <span className="text-[#C8102E]" style={{ fontFamily: "'Georgia', serif" }}>Precision</span> Below.<br/>
+              <span className="text-white">Excellence</span> Above.
             </h1>
             
             <p className="text-lg md:text-xl mb-8 opacity-80 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-              Luxury remodels and emergency repairs built to last a lifetime.
+              Expert underground utilities and excavation serving Bloomington, Indiana.
             </p>
             
-            <button onClick={handleCTA} className="w-full sm:w-auto bg-gold text-navy px-10 py-4 rounded-xl font-bold shadow-2xl hover:bg-white transition-all active:scale-95">
-              Get Your Free Consultation
+            <button onClick={handleCTA} className="w-full sm:w-auto bg-[#C8102E] text-white px-10 py-4 rounded-xl font-bold shadow-2xl hover:bg-[#A00D24] transition-all active:scale-95">
+              Get Your Project Quote
             </button>
           </div>
 
@@ -102,36 +99,33 @@ const Hero = () => {
               className="relative p-[1px] rounded-3xl lg:rounded-[2.5rem] bg-gradient-to-b from-white/40 via-white/10 to-transparent shadow-2xl"
             >
               {/* THE GLASS BODY */}
-              {/* Mobile: Reduced padding (p-5), Desktop: Original padding (lg:p-10) */}
-              <div className="relative bg-[#0a192f]/40 backdrop-blur-[30px] rounded-[1.4rem] lg:rounded-[2.4rem] p-5 lg:p-10 overflow-hidden border border-white/5">
+              <div className="relative bg-[#1a1a1a]/40 backdrop-blur-[30px] rounded-[1.4rem] lg:rounded-[2.4rem] p-5 lg:p-10 overflow-hidden border border-white/5">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
                 
                 <div className="relative z-10 text-center">
-                  <h3 className="text-white/80 font-medium text-xs lg:text-lg mb-4 lg:mb-8 tracking-widest uppercase">Project Highlight</h3>
+                  <h3 className="text-white/80 font-medium text-xs lg:text-lg mb-4 lg:mb-8 tracking-widest uppercase">Recent Project</h3>
                   
-                  {/* Stats Grid - MOBILE REFACTOR */}
-                  {/* Mobile: grid-cols-4 (horizontal strip) + dividers */}
-                  {/* Desktop: grid-cols-2 (square) + no dividers */}
+                  {/* Stats Grid */}
                   <div className="grid grid-cols-4 lg:grid-cols-2 gap-2 lg:gap-10 divide-x divide-white/10 lg:divide-none">
                     
                     <div className="space-y-1 px-1 lg:px-0">
-                      <div className="text-xl lg:text-4xl font-bold text-gold"><CountingNumber value="6" /></div>
-                      <div className="text-[8px] lg:text-[10px] text-white/40 uppercase tracking-widest">Weeks</div>
+                      <div className="text-xl lg:text-4xl font-bold text-[#C8102E]"><CountingNumber value="2.3" /></div>
+                      <div className="text-[8px] lg:text-[10px] text-white/40 uppercase tracking-widest">Miles</div>
                     </div>
                     
                     <div className="space-y-1 px-1 lg:px-0">
-                      <div className="text-xl lg:text-4xl font-bold text-gold"><CountingNumber value="20k" /></div>
-                      <div className="text-[8px] lg:text-[10px] text-white/40 uppercase tracking-widest">Budget</div>
+                      <div className="text-xl lg:text-4xl font-bold text-[#C8102E]"><CountingNumber value="6" /></div>
+                      <div className="text-[8px] lg:text-[10px] text-white/40 uppercase tracking-widest">Days</div>
                     </div>
                     
                     <div className="space-y-1 px-1 lg:px-0">
-                      <div className="text-xl lg:text-4xl font-bold text-gold"><CountingNumber value="5★" /></div>
-                      <div className="text-[8px] lg:text-[10px] text-white/40 uppercase tracking-widest">Rating</div>
+                      <div className="text-xl lg:text-4xl font-bold text-[#C8102E]"><CountingNumber value="0" /></div>
+                      <div className="text-[8px] lg:text-[10px] text-white/40 uppercase tracking-widest">Delays</div>
                     </div>
                     
                     <div className="space-y-1 px-1 lg:px-0">
-                      <div className="text-xl lg:text-4xl font-bold text-gold"><CountingNumber value="+35%" /></div>
-                      <div className="text-[8px] lg:text-[10px] text-white/40 uppercase tracking-widest">Value</div>
+                      <div className="text-xl lg:text-4xl font-bold text-[#C8102E]"><CountingNumber value="100%" /></div>
+                      <div className="text-[8px] lg:text-[10px] text-white/40 uppercase tracking-widest">Pass Rate</div>
                     </div>
                   
                   </div>
@@ -139,9 +133,9 @@ const Hero = () => {
                   {/* Testimonial Section */}
                   <div className="mt-4 lg:mt-10 pt-4 lg:pt-8 border-t border-white/10">
                     <p className="text-xs lg:text-sm text-white/60 italic leading-relaxed">
-                      "They finished early and exceeded every expectation."
+                      "On time, under budget, and zero callbacks. Best utility crew we've worked with."
                     </p>
-                    <p className="text-[10px] lg:text-[11px] text-gold mt-2 lg:mt-4 font-bold tracking-widest uppercase">— The Martinez Family</p>
+                    <p className="text-[10px] lg:text-[11px] text-[#C8102E] mt-2 lg:mt-4 font-bold tracking-widest uppercase">— Thompson Construction</p>
                   </div>
                 </div>
               </div>
