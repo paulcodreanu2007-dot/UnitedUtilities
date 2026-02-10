@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Send } from "lucide-react";
-import { motion } from " framer-motion";
+import { motion } from "framer-motion";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Required").max(100),
