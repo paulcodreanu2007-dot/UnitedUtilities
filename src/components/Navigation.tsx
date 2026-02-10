@@ -18,7 +18,6 @@ const Navigation = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Reveal row 2 only if scrolling up AND not at the very top
       if (currentScrollY < lastScrollY.current && currentScrollY > 50) {
         setIsVisible(true);
       } else {
@@ -40,7 +39,6 @@ const Navigation = () => {
   return (
     <nav className="fixed top-0 w-full z-50 bg-[#1a1a1a]/95 backdrop-blur-xl border-b border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]" role="navigation">
       
-      {/* LOADING BAR - Changed to Cardinal Red */}
       <div
         className="absolute top-0 left-0 h-[3px] bg-[#C8102E] transition-all duration-150 shadow-[0_0_8px_#C8102E] z-[60]"
         style={{ width: `${scrollProgress}%` }}
@@ -48,15 +46,16 @@ const Navigation = () => {
 
       <div className="max-w-7xl mx-auto px-6 flex flex-col justify-center min-h-[70px] md:min-h-[80px]">
         
-        {/* ROW 1: ALWAYS VISIBLE */}
         <div className="flex items-center justify-between w-full z-[55] bg-[#1a1a1a] py-4">
-          <a href="#home" 
-             className="text-[#C8102E] text-xl md:text-2xl font-bold tracking-tight" 
-             style={{ 
-               fontFamily: "'Georgia', serif",
-               textShadow: "0.5px 0.5px 0px rgba(0,0,0,1), 1.5px 1.5px 2px rgba(0,0,0,0.8)"
-             }}
-             onClick={() => handleClick("#home")}>
+          <a 
+            href="#home" 
+            className="text-[#C8102E] text-xl md:text-2xl font-bold tracking-tight" 
+            style={{ 
+              fontFamily: "'Georgia', serif",
+              textShadow: "0.5px 0.5px 0px rgba(0,0,0,1), 1.5px 1.5px 2px rgba(0,0,0,0.8)"
+            }}
+            onClick={() => handleClick("#home")}
+          >
             United Utilities
           </a>
 
@@ -69,7 +68,6 @@ const Navigation = () => {
           </a>
         </div>
 
-        {/* ROW 2: CONDITIONAL REVEAL */}
         <AnimatePresence>
           {isVisible && (
             <motion.div 
