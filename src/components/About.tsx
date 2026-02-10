@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
-import { CheckCircle, Shield, HardHat, Construction } from "lucide-react"; // Updated Icons
+import { CheckCircle, Shield, HardHat, Construction } from "lucide-react";
 import { useCountUp } from "@/hooks/useCountUp";
-import ownerPortrait from "@/assets/owner-portrait.jpg"; // Replace with your United Utilities lead photo
+
+// Using a high-quality industrial placeholder to prevent Vercel "ENOENT" build errors
+const ownerPortrait = "https://images.unsplash.com/photo-1541913057-074989670732?q=80&w=1000&auto=format&fit=crop";
 
 const badges = [
   { Icon: CheckCircle, text: "Licensed", hasCounter: false },
   { Icon: Shield, text: "Insured", hasCounter: false },
-  { Icon: HardHat, text: "OSHA Certified", hasCounter: false }, // Industry specific
+  { Icon: HardHat, text: "OSHA Certified", hasCounter: false },
   { Icon: Construction, text: "Projects Done", hasCounter: true, count: 250 },
 ];
 
@@ -30,14 +32,14 @@ const About = () => (
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="relative aspect-[4/5] lg:aspect-square overflow-hidden rounded-3xl"
+            className="relative aspect-[4/5] lg:aspect-square overflow-hidden rounded-3xl shadow-2xl"
           >
             <img
               src={ownerPortrait}
-              alt="United Utilities Professional"
+              alt="United Utilities Professional Excavation"
               className="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700"
             />
-            {/* Mobile Gradient Overlay: Fades into the Charcoal background */}
+            {/* Mobile Gradient Overlay: Fades the bottom into the Charcoal background */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent lg:hidden" />
           </motion.div>
         </div>
