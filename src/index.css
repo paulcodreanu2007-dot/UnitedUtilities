@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 213 55% 24%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 213 55% 24%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 213 55% 24%;
+
+    --primary: 213 55% 24%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 215 14% 34%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 14% 34%;
+
+    --accent: 43 65% 52%;
+    --accent-foreground: 213 55% 24%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 215 14% 75%;
+    --ring: 43 65% 52%;
+
+    --radius: 0.5rem;
+
+    --navy: 213 55% 24%;
+    --gold: 43 65% 52%;
+    --slate: 215 14% 34%;
+    --light-gray: 210 40% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  section {
+    scroll-margin-top: 80px;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-16 md:py-24 px-6;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+@layer utilities {
+  .text-navy {
+    color: hsl(213, 55%, 24%);
+  }
+
+  .bg-navy {
+    background-color: hsl(213, 55%, 24%);
+  }
+
+  .text-gold {
+    color: hsl(43, 65%, 52%);
+  }
+
+  .bg-gold {
+    background-color: hsl(43, 65%, 52%);
+  }
+
+  .text-slate-custom {
+    color: hsl(215, 14%, 34%);
+  }
+
+  .bg-light-gray {
+    background-color: hsl(210, 40%, 98%);
+  }
+
+  .border-gold {
+    border-color: hsl(43, 65%, 52%);
+  }
+
+  .ring-gold {
+    --tw-ring-color: hsl(43, 65%, 52%);
+  }
+
+  .focus-gold:focus {
+    --tw-ring-color: hsl(43, 65%, 52%);
+    @apply ring-2 outline-none;
+    border-color: hsl(43, 65%, 52%);
+  }
+}
+/* Custom Gold Thread Scrollbar */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a192f; /* Matches your Navy background */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #d4af37, #f4cf57);
+    border-radius: 10px;
+    border: 2px solid #0a192f; /* Creates a "floating" effect */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ffffff; /* Turns white/gold on hover */
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+  }
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d4af37 #0a192f;
+}
+.mask-gradient {
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.3);
+  border-radius: 10px;
+}
