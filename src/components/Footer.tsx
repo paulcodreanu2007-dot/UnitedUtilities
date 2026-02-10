@@ -2,7 +2,10 @@ import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react
 
 const Footer = () => {
   const handleScroll = (href: string) => {
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -62,21 +65,24 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact Info - Updated with your phone numbers */}
           <div className="bg-white/5 p-8 rounded-[2rem] border border-white/10 lg:bg-transparent lg:p-0 lg:border-none lg:rounded-none shadow-xl lg:shadow-none">
             <h4 className="text-white font-bold text-xs uppercase tracking-[2px] mb-8 text-center lg:text-left">Headquarters</h4>
             <ul className="space-y-5 text-sm">
-              <li className="flex items-center gap-4 group justify-center lg:justify-start">
-                <div className="p-2.5 rounded-xl bg-[#C8102E]/10 text-[#C8102E] group-hover:bg-[#C8102E] group-hover:text-white transition-all">
+              <li className="flex items-start gap-4 group justify-center lg:justify-start">
+                <div className="p-2.5 rounded-xl bg-[#C8102E]/10 text-[#C8102E] group-hover:bg-[#C8102E] group-hover:text-white transition-all shrink-0">
                    <Phone size={18} />
                 </div>
-                <span className="text-gray-300 font-medium">(812) 555-0199</span>
+                <div className="flex flex-col">
+                  <span className="text-gray-300 font-medium">(812) 271-4432</span>
+                  <span className="text-gray-300 font-medium">(812) 325-1883</span>
+                </div>
               </li>
               <li className="flex items-center gap-4 group justify-center lg:justify-start">
                 <div className="p-2.5 rounded-xl bg-[#C8102E]/10 text-[#C8102E] group-hover:bg-[#C8102E] group-hover:text-white transition-all">
                    <Mail size={18} />
                 </div>
-                <span className="text-gray-300 font-medium text-xs">ops@unitedutilities.com</span>
+                <span className="text-gray-300 font-medium text-xs tracking-tight">contact@unitedutilitiesin.com</span>
               </li>
               <li className="flex items-start gap-4 group justify-center lg:justify-start">
                 <div className="p-2.5 rounded-xl bg-[#C8102E]/10 text-[#C8102E] group-hover:bg-[#C8102E] group-hover:text-white transition-all shrink-0">
